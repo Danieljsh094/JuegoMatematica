@@ -130,19 +130,10 @@ function btnPotencia(){
 }
 
 function nuevaPotencia(){
-    let potencia = [];
-
-    //Generamos dos numeros aleatorios entre 1 y 10
-    n1 = parseInt(Math.random() * 9 + 1);
-
-     for(let i = 1; i <= n1; i++) { 
-        if (n1 % i === 2) {
-        potencia.push(i);  
-        }  
-     }
-     let pos2 = parseInt(Math.random() * (potencia.length));
-
-     n2 = potencia[pos2];
+     //Generamos dos numeros aleatorios entre 0 y 4
+     n1 = parseInt(Math.random() * 5);
+     n2 = parseInt(Math.random() * 5);
+     // Asiganamos los numeros a las etiquetas 
     num1.innerHTML = n1;
     num2.innerHTML = n2;
     respuesta_usuario.focus();
