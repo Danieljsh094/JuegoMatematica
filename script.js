@@ -117,6 +117,38 @@ function nuevaDivision() {
     respuesta_usuario.focus();
 }
 
+function btnPotencia(){
+    //Limpiamos el div contenedor de las correcciones
+    msj_correccion.innerHTML = "";
+    // Agregamos la clase activa al boton suma y la quitamos del resto
+    activarBoton("potencia");
+    operacion_actual = "**";
+    // Asignamos la operacion suma a la etiqueta 
+    operacion.innerHTML = " ^ ";
+    //generamos los numeros aleatorios de la suma 
+    nuevaPotencia();
+}
+
+function nuevaPotencia(){
+    let potencia = [];
+
+    //Generamos dos numeros aleatorios entre 1 y 10
+    n1 = parseInt(Math.random() * 9 + 1);
+
+     for(let i = 1; i <= n1; i++) { 
+        if (n1 % i === 2) {
+        potencia.push(i);  
+        }  
+     }
+     let pos2 = parseInt(Math.random() * (potencia.length));
+
+     n2 = potencia[pos2];
+    num1.innerHTML = n1;
+    num2.innerHTML = n2;
+    respuesta_usuario.focus();
+
+}
+
 // Funcion que controla si la respuesta es correcta
 function corregir(){
     // Si el usuario no ha ingresado nada no continuo 
@@ -151,6 +183,8 @@ function corregir(){
         nuevoProducto();
     }else if (operacion_actual == "/") {
         nuevaDivision();
+    }else if (operacion_actual == "**") {
+        nuevaPotencia();
     }
 
     // Limpio el input 
@@ -175,5 +209,6 @@ function activarBoton(idBoton) {
     document.getElementById("resta").className="";
     document.getElementById("producto").className="";
     document.getElementById("division").className="";
+    document.getElementById("potencia").className="";
     document.getElementById(idBoton).className="activado";
 }
